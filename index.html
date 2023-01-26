@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sesi 6 Cuy University</title>
+</head>
+<body>
+    <div  class="container">
+        <nav>
+            <a onclick="reRender()" id="home">Home</a>
+            <a onclick="darkMode()" id="mode">Mode</a>
+        </nav>
+        <h1>sesi 6 cuy University</h1>
+        <p class="info" id="info"></p>
+    </div>
+
+    <!-- JS FUNCTION START-->
+    <script>
+        let body = document.body;
+        let info = document.getElementById('info')
+        let mode = document.getElementById('mode')
+        let home = document.getElementById('home')
+
+        
+        const darkLimit = 5;
+        let darkCounter = 0;
+
+        let darkRemainingLeft; 
+        function darkMode() {
+            if (darkRemainingLeft == 1) {
+                mode.style.display = "none";
+                info.textContent = "Jatah Fitur DarkMode anda sudah habis!"
+                home.textContent = "Restart";
+                return alert('yah abis masanya maks 5');
+            }
+            darkCounter +=1;
+             darkRemainingLeft = darkLimit - darkCounter;
+            //render ke info element
+
+            info.textContent = `Jatah darkmode anda ${darkCounter} x, tersisa ${darkRemainingLeft}`
+            body.classList.toggle('dark');
+
+        }
+        function reRender(){
+            location.reload();
+        }
+    </script>
+    <!-- JS FUNCTION END -->
+</body>
+</html>
