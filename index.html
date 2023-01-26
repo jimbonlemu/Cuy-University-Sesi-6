@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <title>Sesi 6 Cuy University</title>
 </head>
+
 <body>
-    <div  class="container">
+    <div class="container">
         <nav>
             <a onclick="reRender()" id="home">Home</a>
             <a onclick="darkMode()" id="mode">Mode</a>
+            <a onclick="bonekMode()" id="bonek">Bonek</a>
+            <a onclick="aremaMode()" id="arema">Arema</a>
         </nav>
         <h1>sesi 6 cuy University</h1>
         <p class="info" id="info"></p>
@@ -20,34 +24,47 @@
     <!-- JS FUNCTION START-->
     <script>
         let body = document.body;
-        let info = document.getElementById('info')
-        let mode = document.getElementById('mode')
-        let home = document.getElementById('home')
+        let info = document.getElementById("info");
+        let mode = document.getElementById("mode");
+        let home = document.getElementById("home");
+        mode.textContent = "Black Mode"
 
-        
         const darkLimit = 5;
         let darkCounter = 0;
+        let darkRemainingLeft;
 
-        let darkRemainingLeft; 
         function darkMode() {
             if (darkRemainingLeft == 1) {
+                info.textContent = "💥 JATAH FITUR DARKMODE ANDA SUDAH HABIS 💥";
                 mode.style.display = "none";
-                info.textContent = "Jatah Fitur DarkMode anda sudah habis!"
-                home.textContent = "Restart";
-                return alert('yah abis masanya maks 5');
+                home.textContent = "RESTART";
+                return;
             }
-            darkCounter +=1;
-             darkRemainingLeft = darkLimit - darkCounter;
+
+            darkCounter += 1;
+            darkRemainingLeft = darkLimit - darkCounter;
+            
             //render ke info element
+            info.textContent = `Darkmode dipakai ${darkCounter}x, tersisa ${darkRemainingLeft}`;
 
-            info.textContent = `Jatah darkmode anda ${darkCounter} x, tersisa ${darkRemainingLeft}`
-            body.classList.toggle('dark');
-
+            /// the answer
+            body.classList.toggle("dark") ? mode.textContent = "Gold Mode" : mode.textContent = "Black Mode";
+            
         }
-        function reRender(){
+
+        function bonekMode(){
+            body.classList.toggle("bonek");
+        }
+        function aremaMode(){
+            body.classList.toggle("arema");
+        }
+
+        function reRender() {
             location.reload();
         }
+
     </script>
     <!-- JS FUNCTION END -->
 </body>
+
 </html>
